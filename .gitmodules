@@ -1,0 +1,6 @@
+[submodule "components/vl53l5cx_uld/upstream"]
+	path = components/vl53l5cx_uld/upstream
+	url = https://github.com/STMicroelectronics/stm32-vl53l5cx.git
+[submodule "components/bmi08x_sensor_api/upstream"]
+	path = components/bmi08x_sensor_api/upstream
+	url = https://github.com/boschsensortec/BMI08x-Sensor-API.git
