@@ -17,4 +17,6 @@ add_prebuilt_library(gene_precompiled_lib "${_prebuilt_lib}"
 target_link_libraries(${COMPONENT_LIB} INTERFACE
     gene_precompiled_lib
     "-Wl,--undefined=user_init"
+    "-Wl,--undefined=user_on_ready"
+    "-Wl,--undefined=user_on_predict_result"
 )

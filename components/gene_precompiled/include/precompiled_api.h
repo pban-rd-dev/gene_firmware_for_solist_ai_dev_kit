@@ -2,46 +2,58 @@
  * @file precompiled_api.h
  * @brief gene firmware dev-kit hook API (public interface).
  *
- * Declares hooks that user extension code (linked in the dev-kit
- * project) may override to customize firmware behavior without seeing
- * the closed-source implementation.
+ * Declares hooks that user extension code may override to customize
+ * firmware behavior. The pre-compiled firmware ships weak default
+ * (no-op) implementations of every hook. Providing a strong
+ * definition in user-side code overrides the default at link time.
  *
- * Link-time contract:
- *   - The pre-compiled firmware archive takes strong UND references to
- *     every hook declared here from its calling TUs.
- *   - Weak default no-op implementations live in a separate TU
- *     (precompiled_default_hooks.c) so a downstream strong override
- *     wins under the default -fno-semantic-interposition.
- *   - Dev-kit users declare strong definitions in their own TU. The
- *     dev-kit build recipe (WHOLE_ARCHIVE + -Wl,--undefined=<hook>)
- *     forces the linker to pick the user's strong symbol before the
- *     archive scan reaches the weak default.
- *
- * Adding a hook requires 4-way sync:
- *   1. Declare it here.
- *   2. Provide a weak default in precompiled_default_hooks.c.
- *   3. Add the symbol name to tools/exported_symbols.txt.
- *   4. Add -Wl,--undefined=<name> to the dev-kit's precompiled
- *      component INTERFACE link options.
+ * A hook may be overridden or not, independently of any other. Only
+ * override the ones you need.
  */
 #ifndef PRECOMPILED_API_H
 #define PRECOMPILED_API_H
+
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
- * user_init — one-shot startup hook.
+ * user_init — early user-side initialization hook.
  *
  * Invoked once from app_main after firmware subsystems (UART, NVS,
- * config, LED, sensor_task, ml_bridge) are up and FreeRTOS tasks have
- * been created, immediately before app_main returns.
+ * config, LED, sensor_task, ml_bridge) are up and FreeRTOS tasks
+ * have been created, before user_on_ready.
  *
  * ESP_LOG is available. FreeRTOS is running. Long-running work must
  * spawn its own task rather than block here.
  */
 void user_init(void);
+
+/**
+ * user_on_ready — end-of-boot hook.
+ *
+ * Invoked once from app_main just before app_main returns. At this
+ * point every subsystem is initialized, every FreeRTOS task has
+ * been created, and the system is ready to serve commands. The
+ * firmware then keeps running via the tasks; there is no teardown
+ * counterpart.
+ */
+void user_on_ready(void);
+
+/**
+ * user_on_predict_result — inference result callback.
+ *
+ * Invoked from the >ML_GET_RESULT command handler immediately before
+ * the OK response is emitted on the UART. scores points to n float
+ * values, converted from the underlying bfloat16 output.
+ *
+ * The pointer is only valid for the duration of the call. Copy the
+ * data if it must outlive the invocation. This hook is passive — it
+ * cannot suppress or modify the UART response.
+ */
+void user_on_predict_result(const float *scores, size_t n);
 
 #ifdef __cplusplus
 }
