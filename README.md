@@ -1,5 +1,12 @@
 # gene_firmware_for_solist_ai_dev_kit
 
+ESP32-S3 firmware SDK。`main/user_main.c` にフックを実装して振る舞いをカスタマイズする。
+
+## 必要環境
+
+- ESP-IDF v5.4.1
+- Target: `esp32s3`
+
 ## ビルド & 書き込み
 
 ```bash
@@ -10,7 +17,6 @@ idf.py build
 idf.py -p /dev/ttyUSB0 flash monitor -b 921600
 ```
 
-## ユーザコード
+## カスタマイズ
 
-`main/user_main.c` を編集して振る舞いをカスタマイズする。
-オーバーライド可能な関数は `components/gene_precompiled/include/precompiled_api.h` を参照。
+`main/user_main.c` にフックを実装する。利用可能なフックは [`docs/hooks.md`](docs/hooks.md) を参照。
