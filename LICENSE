@@ -1,0 +1,67 @@
+gene_firmware_for_solist_ai_dev_kit — End User License Agreement (EULA)
+
+Copyright (c) 2026 P-ban.com Corporation (株式会社ピーバンドットコム).
+All rights reserved.
+
+A Japanese version of this license is available as `LICENSE.ja`.
+In the event of any discrepancy in interpretation between the English
+and Japanese versions, the Japanese version shall prevail.
+
+1. Definitions
+   "Software" means the source code, header files, precompiled
+   libraries, build scripts, documentation, and any other files
+   contained in this repository.
+   "Dev Kit" means the Solist AI Dev Kit hardware product offered by
+   P-ban.com Corporation.
+   "Licensee" means a person or organization that has legitimately
+   purchased or obtained a Dev Kit.
+
+2. Grant of License
+   Subject to the terms of this Agreement, P-ban.com Corporation
+   grants Licensee a non-exclusive, non-transferable, revocable
+   license to download, install, modify, and use the Software solely
+   for the purpose of developing, testing, and running firmware on a
+   Dev Kit owned or lawfully operated by Licensee.
+
+3. Restrictions
+   Except as expressly permitted in Section 2, Licensee shall not:
+   (a) redistribute, sublicense, sell, lease, rent, or otherwise
+       transfer the Software or any derivative work thereof to any
+       third party;
+   (b) use the Software on hardware other than the Dev Kit;
+   (c) reverse engineer, decompile, or disassemble the precompiled
+       library components, except to the extent such activity is
+       permitted by applicable law notwithstanding this restriction;
+   (d) remove or alter any copyright, trademark, or other
+       proprietary notices contained in the Software.
+
+4. Third-Party Components
+   The Software includes third-party components (including but not
+   limited to git submodules referenced by this repository and
+   sensor driver source code from upstream projects) that are
+   licensed under their own respective terms. Nothing in this
+   Agreement restricts Licensee's rights under those third-party
+   licenses. See each component's directory for its applicable
+   license.
+
+5. No Warranty
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+   OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+   NONINFRINGEMENT.
+
+6. Limitation of Liability
+   IN NO EVENT SHALL P-BAN.COM CORPORATION BE LIABLE FOR ANY CLAIM,
+   DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH
+   THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+7. Termination
+   This license terminates automatically if Licensee breaches any
+   term of this Agreement. Upon termination, Licensee must cease all
+   use of the Software and destroy all copies in Licensee's
+   possession.
+
+8. Governing Law
+   This Agreement shall be governed by and construed in accordance
+   with the laws of Japan.
