@@ -1,6 +1,6 @@
 gene_firmware_for_solist_ai_dev_kit — End User License Agreement (EULA)
 
-Copyright (c) 2026 P-ban.com Corporation (株式会社ピーバンドットコム).
+Copyright (c) 2026 p-ban.com Corp. (株式会社ピーバンドットコム).
 All rights reserved.
 
 A Japanese version of this license is available as `LICENSE.ja`.
@@ -12,12 +12,12 @@ and Japanese versions, the Japanese version shall prevail.
    libraries, build scripts, documentation, and any other files
    contained in this repository.
    "Dev Kit" means the Solist AI Dev Kit hardware product offered by
-   P-ban.com Corporation.
+   p-ban.com Corp.
    "Licensee" means a person or organization that has legitimately
    purchased or obtained a Dev Kit.
 
 2. Grant of License
-   Subject to the terms of this Agreement, P-ban.com Corporation
+   Subject to the terms of this Agreement, p-ban.com Corp.
    grants Licensee a non-exclusive, non-transferable, revocable
    license to download, install, modify, and use the Software solely
    for the purpose of developing, testing, and running firmware on a
@@ -51,7 +51,7 @@ and Japanese versions, the Japanese version shall prevail.
    NONINFRINGEMENT.
 
 6. Limitation of Liability
-   IN NO EVENT SHALL P-BAN.COM CORPORATION BE LIABLE FOR ANY CLAIM,
+   IN NO EVENT SHALL P-BAN.COM CORP. BE LIABLE FOR ANY CLAIM,
    DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
    TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH
    THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
