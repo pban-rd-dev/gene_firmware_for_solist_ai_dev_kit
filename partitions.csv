@@ -1,0 +1,20 @@
+# gene_firmware_for_solist_ai partition table (16 MB flash, ESP32-S3-WROOM-1-N16R8)
+#
+# Replaces the built-in "Single App, Large" layout. The 4 MB "storage"
+# FAT partition backs MIC internal-flash recording (mic.storage=internal).
+# See docs/internal_storage_recording.md.
+#
+# Sized deliberately small (4 MB) to leave ~8.9 MB of the 16 MB flash
+# free for future growth (larger app, OTA dual-slot, extra data
+# partitions) without having to shrink the recording area later.
+#
+# Recording room in 4 MB (mono 16-bit): voice clock (16 kHz = 32 KB/s)
+# ~125 s; ultrasonic clock (75 kHz = 150 KB/s) ~27 s. The recording is
+# byte-capped by free space, so mic_sensor finalizes the WAV cleanly
+# when the partition is about to fill.
+#
+# Name,     Type, SubType,  Offset,    Size,      Flags
+nvs,        data, nvs,      0x9000,    0x6000,
+phy_init,   data, phy,      0xf000,    0x1000,
+factory,    app,  factory,  0x10000,   0x300000,
+storage,    data, fat,      0x310000,  0x400000,

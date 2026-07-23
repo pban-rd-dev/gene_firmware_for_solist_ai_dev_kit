@@ -1,28 +1,54 @@
+# ESP32-S3 Configuration
 CONFIG_IDF_TARGET="esp32s3"
 
-CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
-CONFIG_ESPTOOLPY_FLASHSIZE="4MB"
+# Serial flasher config
+# ESP32-S3-WROOM-1-N16R8 carries 16 MB flash; the old 4 MB setting left
+# most of it unusable. 16 MB is required for the "storage" FAT partition
+# that backs MIC internal-flash recording.
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="16MB"
 
-CONFIG_PARTITION_TABLE_SINGLE_APP_LARGE=y
+# Partition Table — custom layout adds a 12 MB FAT "storage" partition
+# for MIC internal recording (mic.storage=internal). See partitions.csv.
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
 
+# Component config
+
+## FreeRTOS
 CONFIG_FREERTOS_HZ=1000
 CONFIG_FREERTOS_UNICORE=n
 
+## ESP System Settings
 CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
 CONFIG_ESP_TASK_WDT_TIMEOUT_S=10
 
+## UART / Console
 CONFIG_ESP_CONSOLE_UART_NONE=y
+# Disable default console to allow full control of UART0
+# We will manually install uart_driver in uart_handler_init()
 CONFIG_ESP_CONSOLE_SECONDARY_NONE=y
+# Disable the USB-Serial-JTAG secondary console too. Otherwise ESP-IDF
+# spawns a dedicated console task on PRO_CPU that competes with uart_rx
+# for core 0 time. All ESP_LOG output already goes through our UART
+# vprintf redirect; we don't need a second log path.
 
+## SPI
 CONFIG_SPI_MASTER_IN_IRAM=y
 CONFIG_SPI_MASTER_ISR_IN_IRAM=y
 
+## I2C
 CONFIG_I2C_ENABLE_DEBUG_LOG=n
 
+## Log output
 CONFIG_LOG_DEFAULT_LEVEL_INFO=y
 CONFIG_LOG_MAXIMUM_LEVEL_VERBOSE=y
 
+## GPIO
 CONFIG_GPIO_ESP32_SUPPORT_SWITCH_SLP_PULL=y
 
+## FATFS — enable long filenames so mic_rec_<ms>_<cnt>.wav (>8 chars)
+## can be created on the SD card. Without this, fopen returns EINVAL
+## because 8.3 SFN is the only format the FS will accept.
 CONFIG_FATFS_LFN_HEAP=y
 CONFIG_FATFS_MAX_LFN=64
