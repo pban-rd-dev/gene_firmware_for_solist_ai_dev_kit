@@ -52,3 +52,28 @@ CONFIG_GPIO_ESP32_SUPPORT_SWITCH_SLP_PULL=y
 ## because 8.3 SFN is the only format the FS will accept.
 CONFIG_FATFS_LFN_HEAP=y
 CONFIG_FATFS_MAX_LFN=64
+
+## PSRAM — DELIBERATELY NOT ENABLED. The module is an ESP32-S3-WROOM-1-N16R8
+## whose 8 MB PSRAM is *Octal*, and octal flash/PSRAM consume GPIO33-37 on
+## this silicon (GPIO35=SPIIO6, GPIO36=SPIIO7, GPIO37=SPIDQS). The gene v2 PCB
+## wires the Solist-AI SPI master to exactly those pins (CLK=36, MOSI/MISO=
+## 35/37; see main/spi_hal_esp32s3.c). So enabling PSRAM steals the slave-SPI
+## pins: the slave stops responding (app_master_ai_* -> DEVICE_ERROR) and the
+## contended lines trigger INT_WDT reboot loops. PSRAM and the Solist-AI SPI
+## slave are mutually exclusive on this board. It is also unnecessary: the
+## 64 KB command line lives in .bss (g_cmd_line, shared UART/BLE), so full ML
+## command parity over BLE needs no PSRAM. Do NOT re-enable without a PCB
+## respin that moves the SPI master off GPIO33-37.
+
+## Bluetooth / NimBLE — BLE control transport (docs/ble_control_spec.md).
+## The controller + NimBLE host are always linked; they only start when
+## config ble.enabled=1 (opt-in, applied at boot). BLE is peripheral-only.
+CONFIG_BT_ENABLED=y
+CONFIG_BT_NIMBLE_ENABLED=y
+CONFIG_BT_NIMBLE_ROLE_PERIPHERAL=y
+CONFIG_BT_NIMBLE_ROLE_CENTRAL=n
+CONFIG_BT_NIMBLE_ROLE_BROADCASTER=n
+CONFIG_BT_NIMBLE_ROLE_OBSERVER=n
+CONFIG_BT_NIMBLE_MAX_CONNECTIONS=1
+# Larger ATT MTU for higher stream throughput (negotiated per connection).
+CONFIG_BT_NIMBLE_ATT_PREFERRED_MTU=247
