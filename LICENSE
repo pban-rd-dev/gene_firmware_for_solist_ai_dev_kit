@@ -8,9 +8,23 @@ In the event of any discrepancy in interpretation between the English
 and Japanese versions, the Japanese version shall prevail.
 
 1. Definitions
-   "Software" means the source code, header files, precompiled
-   libraries, build scripts, documentation, and any other files
-   contained in this repository.
+   "Software" means those files contained in this repository whose
+   copyright is held by p-ban.com Corp., namely:
+     - the build configuration files at the repository root
+       (`CMakeLists.txt`, `partitions.csv`, `sdkconfig.defaults`, etc.)
+     - the source code under `main/`
+     - the header files and the precompiled library
+       (`lib/libmain.a`) under `components/gene_precompiled/`
+     - `components/*/CMakeLists.txt` and the header files under
+       `components/vl53l5cx_uld/inc/`
+     - the documentation under `docs/`, `README.md`, and this license
+       document
+   The Third-Party Components defined in Section 4 are NOT part of the
+   Software.
+   "Third-Party Components" means files whose copyright is held by a
+   third party and which are referenced or obtained by this repository;
+   specifically, the contents of the git submodules under
+   `components/*/upstream/`.
    "Dev Kit" means the Solist-AI™ × gene｜ノーコード組み込みAI開発キット hardware
    product offered by p-ban.com Corp.
    "Licensee" means a person or organization that has legitimately
@@ -24,25 +38,34 @@ and Japanese versions, the Japanese version shall prevail.
    Dev Kit owned or lawfully operated by Licensee.
 
 3. Restrictions
-   Except as expressly permitted in Section 2, Licensee shall not:
+   Except as expressly permitted in Section 2, Licensee shall not do
+   any of the following with respect to the Software. The restrictions
+   in this Section do not apply to the Third-Party Components:
    (a) redistribute, sublicense, sell, lease, rent, or otherwise
        transfer the Software or any derivative work thereof to any
        third party;
    (b) use the Software on hardware other than the Dev Kit;
    (c) reverse engineer, decompile, or disassemble the precompiled
-       library components, except to the extent such activity is
-       permitted by applicable law notwithstanding this restriction;
+       library components of the Software, except to the extent such
+       activity is permitted by applicable law notwithstanding this
+       restriction;
    (d) remove or alter any copyright, trademark, or other
        proprietary notices contained in the Software.
 
 4. Third-Party Components
-   The Software includes third-party components (including but not
-   limited to git submodules referenced by this repository and
-   sensor driver source code from upstream projects) that are
-   licensed under their own respective terms. Nothing in this
-   Agreement restricts Licensee's rights under those third-party
-   licenses. See each component's directory for its applicable
-   license.
+   This repository references the following Third-Party Components as
+   git submodules. Their copyrights are held by their respective
+   owners, and their terms of use are governed solely by their own
+   licenses. This Agreement neither grants nor restricts any rights
+   with respect to them.
+     - `components/vl53l5cx_uld/upstream`
+       STMicroelectronics VL53L5CX UltraLite Driver
+       Copyright 2022 STMicroelectronics / BSD-3-Clause
+     - `components/bmi08x_sensor_api/upstream`
+       Bosch Sensortec BMI08x Sensor API
+       Copyright (c) 2023 Bosch Sensortec GmbH / BSD-3-Clause
+   For the full text of each license, see the license file contained
+   in the corresponding submodule directory.
 
 5. No Warranty
    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
