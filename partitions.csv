@@ -1,4 +1,4 @@
-# gene_firmware_for_solist_ai partition table (16 MB flash, ESP32-S3-WROOM-1-N16R8)
+# gene ESP32-S3 partition table (16 MB flash, ESP32-S3-WROOM-1-N16R8)
 #
 # Replaces the built-in "Single App, Large" layout. The 4 MB "storage"
 # FAT partition backs MIC internal-flash recording (mic.storage=internal).
