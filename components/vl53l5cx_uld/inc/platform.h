@@ -8,8 +8,8 @@
  * WrMulti, Reset_Sensor, SwapBuffer, WaitMs), so this file declares
  * exactly those names.
  *
- * The implementation lives in main/vl53l5cx_platform.c
- * (ESP32-S3, I2C v2 master).
+ * The implementation (ESP32-S3, I2C v2 master) is part of the
+ * precompiled library.
  */
 
 #include <stdint.h>
