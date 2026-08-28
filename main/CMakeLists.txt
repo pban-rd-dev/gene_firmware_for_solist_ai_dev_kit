@@ -8,7 +8,5 @@ idf_component_register(
         nvs_flash
         vl53l5cx_uld
         bmi08x_sensor_api
-        hs_pdm_mic_sph0641lu4h
-        sd_card_manager
     WHOLE_ARCHIVE
 )

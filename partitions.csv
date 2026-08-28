@@ -2,7 +2,6 @@
 #
 # Replaces the built-in "Single App, Large" layout. The 4 MB "storage"
 # FAT partition backs MIC internal-flash recording (mic.storage=internal).
-# See docs/internal_storage_recording.md.
 #
 # Sized deliberately small (4 MB) to leave ~8.9 MB of the 16 MB flash
 # free for future growth (larger app, OTA dual-slot, extra data
