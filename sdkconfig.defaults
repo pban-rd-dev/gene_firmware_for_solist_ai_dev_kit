@@ -65,7 +65,7 @@ CONFIG_FATFS_MAX_LFN=64
 ## command parity over BLE needs no PSRAM. Do NOT re-enable without a PCB
 ## respin that moves the SPI master off GPIO33-37.
 
-## Bluetooth / NimBLE — BLE control transport (docs/ble_control_spec.md).
+## Bluetooth / NimBLE — BLE control transport.
 ## The controller + NimBLE host are always linked; they only start when
 ## config ble.enabled=1 (opt-in, applied at boot). BLE is peripheral-only.
 CONFIG_BT_ENABLED=y
