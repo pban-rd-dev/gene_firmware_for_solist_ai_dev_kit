@@ -15,12 +15,8 @@ endif()
 #   bt                                NimBLE host (BLE control transport)
 #   esp_hw_support                    ditto
 # The PDM mic and SD card drivers are inside libmain.a, so no component
-# supplies them. The third-party sensor drivers stay as components: they
-# are ST/Bosch submodules built from source.
-#
-# Keep this list in sync with main/CMakeLists.txt REQUIRES in the
-# gene_firmware_for_solist_ai repo. The refresh workflow does not touch
-# this file, so a new dependency there has to be mirrored here by hand.
+# supplies them. The ST/Bosch sensor drivers stay as components because
+# they are built from their upstream sources.
 add_prebuilt_library(gene_precompiled_lib "${_prebuilt_lib}"
     REQUIRES driver esp_timer nvs_flash freertos esp_hw_support
              fatfs sdmmc esp_driver_sdspi
