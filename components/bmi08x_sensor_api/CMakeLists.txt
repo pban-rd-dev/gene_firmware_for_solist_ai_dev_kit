@@ -8,9 +8,6 @@
 #   upstream/bmi08g.c      -- gyroscope driver
 #   upstream/bmi08xa.c     -- common (BMI08x) helpers
 #   upstream/bmi08*.h      -- public headers
-#
-# Optional plugin sources (motion management / anymotion) are NOT
-# compiled here. Add them later if Phase 6+ needs the motion features.
 
 set(_dir "${CMAKE_CURRENT_LIST_DIR}")
 set(_upstream "${_dir}/upstream")

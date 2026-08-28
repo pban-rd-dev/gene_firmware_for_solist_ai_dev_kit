@@ -9,9 +9,6 @@
 #   upstream/modules/vl53l5cx_buffers.h         -- firmware blob
 #   upstream/LICENSE.md                         -- BSD-3-Clause
 #   inc/platform.h                              -- platform layer header (this repo)
-#
-# The platform.h shim declares the I/O hooks (RdByte/WrByte/... ) which
-# are implemented in main/vl53l5cx_platform.c.
 
 set(_uld_dir "${CMAKE_CURRENT_LIST_DIR}")
 set(_uld_modules "${_uld_dir}/upstream/modules")

@@ -1,8 +1,8 @@
 # gene_firmware_for_solist_ai_dev_kit
 
-株式会社ピーバンドットコムが提供する [Solist AI Dev Kit](https://www.p-ban.com/services/gene/solist-ai.html) 用の ESP32-S3 プリコンパイル済み firmware SDK。
+株式会社ピーバンドットコムが提供する [Solist-AI™ × gene｜ノーコード組み込みAI開発キット](https://www.p-ban.com/services/gene/solist-ai.html) 用の ESP32-S3 プリコンパイル済み firmware SDK。
 
-## Solist AI Dev Kit とは
+## Solist-AI™ × gene｜ノーコード組み込みAI開発キット とは
 
 株式会社ピーバンドットコムが提供する、オンデバイス機械学習の評価・プロトタイピング向け開発キット。ESP32-S3 と複数のセンサーを搭載し、収集したセンサーデータに対して ML 推論をキット単体で実行できる。
 
@@ -10,7 +10,7 @@
 
 ## このリポジトリは何か
 
-Solist AI Dev Kit 用 firmware を **プリコンパイル済みライブラリ + hook API** の形式で提供する SDK。
+Solist-AI™ × gene｜ノーコード組み込みAI開発キット 用 firmware を **プリコンパイル済みライブラリ + hook API** の形式で提供する SDK。
 
 firmware 本体 (センサー driver、ML runtime、UART command handler、FreeRTOS task 群) は `components/gene_precompiled/lib/libmain.a` として同梱されている。利用者は `main/user_main.c` に hook 関数を実装するだけで、firmware 本体に手を入れずに振る舞いをカスタマイズできる。
 
@@ -33,7 +33,7 @@ hook の一覧と仕様は [`docs/hooks.md`](docs/hooks.md) を参照。
 ## ターゲット
 
 - MCU: **ESP32-S3**
-- Flash: 4MB
+- Flash: 16MB (ESP32-S3-WROOM-1-N16R8)
 
 ## ビルド & 書き込み
 
@@ -66,6 +66,6 @@ idf.py -p /dev/ttyUSB0 flash monitor -b 921600
 
 ## ライセンス
 
-本リポジトリの内容は Solist AI Dev Kit の購入者による、同キット向けのカスタマイズ用途に限り使用を許可する。詳細は [`LICENSE.ja`](LICENSE.ja) (日本語 / 正本) または [`LICENSE`](LICENSE) (English) を参照。
+本リポジトリの内容は Solist-AI™ × gene｜ノーコード組み込みAI開発キット の購入者による、同キット向けのカスタマイズ用途に限り使用を許可する。詳細は [`LICENSE.ja`](LICENSE.ja) (日本語 / 正本) または [`LICENSE`](LICENSE) (English) を参照。
 
 Copyright © 株式会社ピーバンドットコム. All rights reserved.
