@@ -66,6 +66,8 @@ idf.py -p /dev/ttyUSB0 flash monitor -b 921600
 
 ## ライセンス
 
-本リポジトリの内容は Solist-AI™ × gene｜ノーコード組み込みAI開発キット の購入者による、同キット向けのカスタマイズ用途に限り使用を許可する。詳細は [`LICENSE.ja`](LICENSE.ja) (日本語 / 正本) または [`LICENSE`](LICENSE) (English) を参照。
+本リポジトリのうち株式会社ピーバンドットコムが著作権を持つ部分は、Solist-AI™ × gene｜ノーコード組み込みAI開発キット の購入者による、同キット向けのカスタマイズ用途に限り使用を許可する。詳細は [`LICENSE.ja`](LICENSE.ja) (日本語 / 正本) または [`LICENSE`](LICENSE) (English) を参照。
+
+`components/*/upstream/` 配下の git submodule は第三者コンポーネントであり、上記の制限は適用されない。それぞれ各自のライセンスに従う (ST VL53L5CX ULD: BSD-3-Clause / Bosch BMI08x Sensor API: BSD-3-Clause)。
 
 Copyright © 株式会社ピーバンドットコム. All rights reserved.
