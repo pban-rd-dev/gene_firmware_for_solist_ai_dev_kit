@@ -14,6 +14,8 @@ Solist-AI™ × gene｜ノーコード組み込みAI開発キット 用 firmware
 
 firmware 本体 (センサー driver、ML runtime、UART command handler、FreeRTOS task 群) は `components/gene_precompiled/lib/libmain.a` として同梱されている。利用者は `main/user_main.c` に hook 関数を実装するだけで、firmware 本体に手を入れずに振る舞いをカスタマイズできる。
 
+`components/gene_precompiled/build_config.cmake` は `libmain.a` と対になる生成物で、`libmain.a` をビルドしたときの設定 (ToF ドライバの候補数など) を、ソースからビルドするコンポーネントにも適用する。**手で編集しないこと** (値が `libmain.a` と食い違うと ToF がエラーなしに動かなくなる)。ファイルが無い場合はビルドが止まる。
+
 hook の一覧と仕様は [`docs/hooks.md`](docs/hooks.md) を参照。
 
 ## 主なユースケース

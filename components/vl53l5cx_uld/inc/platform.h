@@ -19,11 +19,14 @@ typedef struct {
 } VL53L5CX_Platform;
 
 /*
- * Multi-target output per zone. ST UltraLite driver allows 1..4.
- * 1 = closest/strongest only (smallest results buffer, fastest).
+ * Targets reported per zone (1..4). The value is fixed by libmain.a and
+ * passed to every component by components/gene_precompiled/build_config.cmake.
+ * There is deliberately no fallback: a value that differs from the one
+ * libmain.a was built with changes the layout of the structs both sides
+ * share, and the sensor then fails without any error.
  */
 #ifndef VL53L5CX_NB_TARGET_PER_ZONE
-#define VL53L5CX_NB_TARGET_PER_ZONE     1U
+#error "VL53L5CX_NB_TARGET_PER_ZONE is not defined; it must come from components/gene_precompiled/build_config.cmake"
 #endif
 
 #define VL53L5CX_COMMS_CHUNK_SIZE       1024
