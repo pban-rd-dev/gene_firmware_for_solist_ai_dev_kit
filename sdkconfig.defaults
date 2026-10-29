@@ -77,3 +77,8 @@ CONFIG_BT_NIMBLE_ROLE_OBSERVER=n
 CONFIG_BT_NIMBLE_MAX_CONNECTIONS=1
 # Larger ATT MTU for higher stream throughput (negotiated per connection).
 CONFIG_BT_NIMBLE_ATT_PREFERRED_MTU=247
+# NimBLE logs every GATT notification at INFO ("GATT procedure initiated:
+# notify; ..." + "att_handle=N"), i.e. ~180 lines/s on UART while a stream
+# goes out over BLE. That buries the device's own logs and fills a host's
+# tty buffer within a second. Warnings and errors still come through.
+CONFIG_BT_NIMBLE_LOG_LEVEL_WARNING=y
